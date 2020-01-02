@@ -36,21 +36,21 @@ class AppNavbar extends Component {
                     </Collapse>
                 </Navbar>
 
-                <Modal isOpen={this.state.isLoginOpen} toggle={toggleLogin} centered="true">
-                    <ModalHeader toggle={this.state.isLoginOpen} className="border-bottom border-primary" style={modalHeaderStyle}>
-                        <h3 class="modal-title">Login </h3>
+                <Modal isOpen={this.state.isLoginOpen} toggle={toggleLogin} centered>
+                    <ModalHeader toggle={toggleLogin} className="border-bottom border-primary" style={modalHeaderStyle}>
+                        Login
                     </ModalHeader>
                     <ModalBody>
                         <div className="container-fluid">
                             <form>
                                 <div className="form-row">
                                     <div className="form-group col-12">
-                                        <label className="sr-only" for="loginEmail">Email address</label>
+                                        <label className="sr-only" htmlFor="loginEmail">Email address</label>
                                         <input type="email" className="form-control form-control-sm" id="loginEmail"
                                             placeholder="Enter email"></input>
                                     </div>
                                     <div className="form-group col-12">
-                                        <label className="sr-only" for="loginPassword">Password</label>
+                                        <label className="sr-only" htmlFor="loginPassword">Password</label>
                                         <input type="password" className="form-control form-control-sm" id="loginPassword"
                                             placeholder="Password"></input>
                                     </div>
@@ -64,7 +64,7 @@ class AppNavbar extends Component {
                                 </div>
                                 <div className="form-row">
                                     <button type="button" className="btn btn-secondary btn-sm ml-auto"
-                                        data-dismiss="modal">Cancel</button>
+                                        onClick={toggleLogin}>Cancel</button>
                                     <button type="submit" className="btn btn-primary btn-sm ml-1">Sign in</button>
                                 </div>
                             </form>
