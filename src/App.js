@@ -12,15 +12,15 @@ import AppFooter from './components/AppFooter';
 function App() {
   return (
     <React.Fragment>
-    <AppHeader />
-    <AppNavbar />
-    <Switch>
-      <Route path="/home" component={FeatureCards} />
-      <Route path="/contact" component={ContactUs} />
-      <Route path="/about" component={AboutUs} />
-      <Redirect to="/home" />
-    </Switch>
-    <AppFooter />
+      <AppHeader />
+      <AppNavbar />
+      <Switch>
+        <Route path="/home" component={FeatureCards} />
+        <Route path="/contact" component={ContactUs} />
+        <Route path="/about" component={AboutUs} />
+        <Redirect to="/home" />
+      </Switch>
+      <AppFooter />
     </React.Fragment>
   );
 }

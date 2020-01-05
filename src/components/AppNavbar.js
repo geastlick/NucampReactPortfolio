@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ModalBody } from 'reactstrap';
 import { Navbar, NavbarToggler, Collapse, Nav, NavItem, ButtonToggle, Modal, ModalHeader } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 class AppNavbar extends Component {
     constructor(props) {
@@ -51,33 +52,28 @@ class AppNavbar extends Component {
                     </ModalHeader>
                     <ModalBody>
                         <div className="container-fluid">
-                            <form>
-                                <div className="form-row">
-                                    <div className="form-group col-12">
-                                        <label className="sr-only" htmlFor="loginEmail">Email address</label>
-                                        <input type="email" className="form-control form-control-sm" id="loginEmail"
-                                            placeholder="Enter email"></input>
-                                    </div>
-                                    <div className="form-group col-12">
-                                        <label className="sr-only" htmlFor="loginPassword">Password</label>
-                                        <input type="password" className="form-control form-control-sm" id="loginPassword"
-                                            placeholder="Password"></input>
-                                    </div>
-                                    <div className="col">
-                                        <div className="form-check">
-                                            <input className="form-check-input" type="checkbox"></input>
-                                            <label className="form-check-label"> Remember me
-                                    </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="form-row">
-                                    <button type="button" className="btn btn-secondary btn-sm ml-auto"
-                                        onClick={toggleLogin}>Cancel</button>
-                                    <button type="submit" className="btn btn-primary btn-sm ml-1">Sign in</button>
-                                </div>
-                            </form>
-                        </div>
+                            <Form>
+                                <FormGroup row>
+                                        <Label className="sr-only" htmlFor="loginEmail">Email address</Label>
+                                        <Input type="email" id="loginEmail" placeholder="Enter email" />
+                                    </FormGroup>
+                                <FormGroup row>
+                                        <Label className="sr-only" htmlFor="loginPassword">Password</Label>
+                                        <Input type="password" id="loginPassword" placeholder="Password" />
+                                    </FormGroup>
+                                <FormGroup row>
+                                        <FormGroup check>
+                                            <Label check>
+                                            <Input type="checkbox" /> Remember me</Label>
+                                        </FormGroup>
+                                </FormGroup>
+                                <FormGroup row>
+                                    <Button color="secondary"
+                                        onClick={toggleLogin}>Cancel</Button>&nbsp;&nbsp;
+                                    <Button type="submit" color="primary">Sign in</Button>
+                                </FormGroup>
+                            </Form>
+                            </div>
                     </ModalBody>
                 </Modal>
             </React.Fragment>
