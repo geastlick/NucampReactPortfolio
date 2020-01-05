@@ -38,7 +38,7 @@ class ContactUs extends Component {
                                 <div className="col">
                                     <div className="form-check form-check-inline">
                                         <input className="form-check-input" type="radio" name="preferredContact"
-                                            id="preferredContactEmail" value="email" checked />
+                                            id="preferredContactEmail" value="email" defaultChecked />
                                         <label className="form-check-label" labelfor="preferredContactEmail">
                                             Email
                                     </label>
@@ -70,7 +70,7 @@ class ContactUs extends Component {
                             </div>
                             <div className="row">
                                 <div className="col offset-sm-2">
-                                    <buttom type="submit" className="btn btn-primary">Submit</buttom>
+                                    <button type="submit" className="btn btn-primary">Submit</button>
                                 </div>
                             </div>
                         </form>
