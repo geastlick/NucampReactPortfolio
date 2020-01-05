@@ -10,7 +10,11 @@ class FeatureCards extends Component {
             );
         });
 
-        return cards;
+        return (
+            <div id="content" className="container homeHighlights">
+                {cards}
+            </div>
+        );
     }
 }
 

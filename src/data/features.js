@@ -6,7 +6,7 @@ export const features = [
         title: "Customer Management",
         highlights: [
             "Quickbooks integration: maintain customer information in just one location",
-            "Schedule follow-up sales calls, e.g. bimonthly or seasonal sign rentals",
+            "Schedule follow-up sales calls, e.g. bimonthly or seasonal sign rental reminders",
             "Maintain history of all past sign rentals (site photos captured via mobile application)",
         ]
     },

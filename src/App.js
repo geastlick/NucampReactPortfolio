@@ -1,18 +1,27 @@
 import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
+
 import AppHeader from './components/AppHeader';
 import AppNavbar from './components/AppNavbar';
 import FeatureCards from './components/FeatureCards';
+import ContactUs from './components/ContactUs';
+import AboutUs from './components/AboutUs';
 import AppFooter from './components/AppFooter';
 
 function App() {
   return (
-    <div>
+    <React.Fragment>
     <AppHeader />
     <AppNavbar />
-    <div id="content" className="homeHighlights"><FeatureCards /></div>
+    <Switch>
+      <Route path="/home" component={FeatureCards} />
+      <Route path="/contact" component={ContactUs} />
+      <Route path="/about" component={AboutUs} />
+      <Redirect to="/home" />
+    </Switch>
     <AppFooter />
-    </div>
+    </React.Fragment>
   );
 }
 

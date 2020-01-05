@@ -10,9 +10,7 @@ class FeatureCard extends Component {
                     if(Array.isArray(item)) {
                         return this.highlights(item,i+1);
                     } else {
-                        return (
-                            <li key={index}>{item}</li>
-                        )
+                        return <li key={index}>{item}</li>;
                     }
                 })
             }
@@ -23,7 +21,7 @@ class FeatureCard extends Component {
     render() {
         const image = (img,alt) => {
             return (
-                <img src={img} alt={alt} className="w-25 img-thumbnail card-img-left" />
+                <img src={img} alt={alt} className="w-25 img-thumbnail card-img-left d-none d-lg-inline" />
             );
         }
 
