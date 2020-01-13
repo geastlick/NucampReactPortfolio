@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarToggler, Collapse, Nav, NavItem } from 'reactstrap';
+import { Button, Navbar, NavbarToggler, Collapse, Nav, NavItem } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class AppNavbar extends Component {
@@ -37,7 +37,7 @@ class AppNavbar extends Component {
                             </NavItem>
                         </Nav>
                         <Nav>
-                            <NavLink to="/signin" color="primary" className="my-2 my-sm-0"><i className="fa fa-sign-in" aria-hidden="true"></i> Sign In</NavLink>
+                            <NavLink to="/signin"><Button color="primary" className="my-2 my-sm-0"><i className="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Sign In</Button></NavLink>
                         </Nav>
                         </div>
                     </Collapse>
