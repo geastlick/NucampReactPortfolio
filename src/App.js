@@ -9,6 +9,7 @@ import FeatureCards from './components/FeatureCards';
 import ContactUs from './components/ContactUs';
 import AboutUs from './components/AboutUs';
 import AppFooter from './components/AppFooter';
+import SignIn from './components/SignIn';
 
 const mapStateToProps = state => {
   return {
@@ -31,6 +32,7 @@ class App extends Component {
           <Route path="/home" render={() => <FeatureCards features={this.props.features} />} />
           <Route path="/contact" component={ContactUs} />
           <Route path="/about" component={AboutUs} />
+          <Route path="/signin" component={SignIn} />
           <Redirect to="/home" />
         </Switch>
         <AppFooter />
