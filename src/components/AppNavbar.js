@@ -23,6 +23,7 @@ class AppNavbar extends Component {
                 <Navbar expand="md" light className="border-bottom border-primary">
                     <NavbarToggler onClick={toggleNav} />
                     <Collapse isOpen={this.state.isNavOpen} navbar>
+                        <div className="container">
                         <Nav className="navbar-nav mr-auto mt-2 mt-lg-0" navbar>
                             <NavItem>
                                 <NavLink className="nav-link" to="/home">
@@ -43,6 +44,7 @@ class AppNavbar extends Component {
                         <Nav>
                             <ButtonToggle onClick={toggleLogin} color="primary" className="my-2 my-sm-0"><i className="fa fa-sign-in" aria-hidden="true"></i> Sign In</ButtonToggle>
                         </Nav>
+                        </div>
                     </Collapse>
                 </Navbar>
 

@@ -1,3 +1,1 @@
-export let Inventory {
-    
-}
+export const INVENTORY = [];

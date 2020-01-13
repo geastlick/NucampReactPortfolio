@@ -1,4 +1,4 @@
-export const features = [
+export const FEATURES = [
     {
         id: 1,
         image: "img/customer.jpg",

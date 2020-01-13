@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import FeatureCard from './FeatureCard';
-import { features } from '../data/features';
 
 class FeatureCards extends Component {
+
     render() {
-        const cards = features.map((f, i) => {
+        const cards = this.props.features.map((f, i) => {
             return (
                 <FeatureCard key={i} feature={f} imageSide={(i % 2 === 0 ? "left": "right")} />
             );

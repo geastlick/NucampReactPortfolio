@@ -1,3 +1,1 @@
-export let Orders {
-    
-}
+export const ORDERS = [];
