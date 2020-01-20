@@ -8,7 +8,7 @@ class AppHeader extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-4 col-sm-3 col-md-2 align-self-center">
-                        <NavbarBrand href="#"><img src="img/EElogo.png" alt="Logo" className="img-fluid" /></NavbarBrand>
+                        <NavbarBrand href="#"><img src="images/EElogo.png" alt="Logo" className="img-fluid" /></NavbarBrand>
                     </div>
                     <div className="col-8 mx-auto">
                         <h1 className="display-4">Sign Rental Management</h1>

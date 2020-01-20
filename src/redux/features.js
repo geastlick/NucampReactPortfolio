@@ -1,7 +1,7 @@
-export const FEATURES = [
+const FEATURES = [
     {
         id: 1,
-        image: "img/customer.jpg",
+        image: "images/customer.jpg",
         imageAlt: "Customer Management",
         title: "Customer Management",
         highlights: [
@@ -12,7 +12,7 @@ export const FEATURES = [
     },
     {
         id: 2,
-        image: "img/todo.jpg",
+        image: "images/todo.jpg",
         imageAlt: "Scheduling Management",
         title: "Scheduling Management",
         highlights: [
@@ -27,7 +27,7 @@ export const FEATURES = [
     },
     {
         id: 3,
-        image: "img/mobapps.png",
+        image: "images/mobapps.png",
         imageAlt: "Mobile Application",
         title: "Mobile Application",
         highlights: [
@@ -38,7 +38,7 @@ export const FEATURES = [
     },
     {
         id: 4,
-        image: "img/reports.png",
+        image: "images/reports.png",
         imageAlt: "Reports Management",
         title: "Reports",
         highlights: [
@@ -48,3 +48,10 @@ export const FEATURES = [
         ]
     }
 ];
+
+export const Features = (state = FEATURES, action) => {
+    switch (action.type) {
+        default:
+            return state;
+    }
+};

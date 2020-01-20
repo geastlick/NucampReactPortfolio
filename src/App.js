@@ -22,6 +22,10 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = {
+
+}
+
 class App extends Component {
   render() {
     return (
@@ -32,7 +36,7 @@ class App extends Component {
           <Route path="/home" render={() => <FeatureCards features={this.props.features} />} />
           <Route path="/contact" component={ContactUs} />
           <Route path="/about" component={AboutUs} />
-          <Route path="/signin" component={SignIn} />
+          <Route path="/signin" render={() => <SignIn users={this.props.users} />} />
           <Redirect to="/home" />
         </Switch>
         <AppFooter />
@@ -41,4 +45,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

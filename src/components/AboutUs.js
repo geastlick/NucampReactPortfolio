@@ -3,35 +3,35 @@ import { Carousel, CarouselItem, CarouselControl, CarouselIndicators } from 'rea
 
 const items = [
     {
-        src: "img/ms_about1_carousel.jpg",
+        src: "images/ms_about1_carousel.jpg",
         altText: "About Us",
     },
     {
-        src: "img/ms_about2_carousel.jpg",
+        src: "images/ms_about2_carousel.jpg",
         altText: "About Us",
     },
     {
-        src: "img/ms_about3_carousel.jpg",
+        src: "images/ms_about3_carousel.jpg",
         altText: "About Us",
     },
     {
-        src: "img/ms_about4_carousel.jpg",
+        src: "images/ms_about4_carousel.jpg",
         altText: "About Us",
     },
     {
-        src: "img/ms_about5_carousel.jpg",
+        src: "images/ms_about5_carousel.jpg",
         altText: "About Us",
     },
     {
-        src: "img/ms_about6_carousel.jpg",
+        src: "images/ms_about6_carousel.jpg",
         altText: "About Us",
     },
     {
-        src: "img/ms_about7_carousel.jpg",
+        src: "images/ms_about7_carousel.jpg",
         altText: "About Us",
     },
     {
-        src: "img/ms_about8_carousel.jpg",
+        src: "images/ms_about8_carousel.jpg",
         altText: "About Us",
     },
 ];
@@ -126,7 +126,7 @@ const AboutUs = (props) => {
                 <div className="card">
                     <div className="row no-gutters">
                         <div className="col-md-3 d-none d-md-block">
-                            <img src="img/ge_portrait.jpg" className="card-img" alt="Portrait of owner/founder" />
+                            <img src="images/ge_portrait.jpg" className="card-img" alt="Portrait of owner/founder" />
                         </div>
                         <div className="col col-md-9">
                             <div className="card-header">Owner and Founder</div>
