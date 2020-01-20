@@ -11,6 +11,8 @@ import AboutUs from './components/AboutUs';
 import AppFooter from './components/AppFooter';
 import SignIn from './components/SignIn';
 
+import { fetchCustomers, fetchInventory, fetchOrders, fetchProducts, fetchUsers } from './redux/ActionCreators';
+
 const mapStateToProps = state => {
   return {
     customers: state.customers,
@@ -23,10 +25,23 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-
+  fetchCustomers: () => (fetchCustomers()),
+  fetchInventory: () => (fetchInventory()),
+  fetchOrders: () => (fetchOrders()),
+  fetchProducts: () => (fetchProducts()),
+  fetchUsers: () => (fetchUsers()),
 }
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.fetchCustomers();
+    this.props.fetchInventory();
+    this.props.fetchOrders();
+    this.props.fetchProducts();
+    this.props.fetchUsers();
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -36,7 +51,7 @@ class App extends Component {
           <Route path="/home" render={() => <FeatureCards features={this.props.features} />} />
           <Route path="/contact" component={ContactUs} />
           <Route path="/about" component={AboutUs} />
-          <Route path="/signin" render={() => <SignIn users={this.props.users} />} />
+          <Route path="/signin" render={() => <SignIn users={this.props.users.users} />} />
           <Redirect to="/home" />
         </Switch>
         <AppFooter />
