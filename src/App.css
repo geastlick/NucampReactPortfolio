@@ -9,6 +9,12 @@ div#content {
   padding: 30px;
   background-image: linear-gradient(to right, #5637dd, #3046C5, #60106b);
   color: white; }
+div.header {
+  background-image: linear-gradient(to right, #5637dd, #3046C5, #60106b);
+  color: white;
+  padding: 5px;
+}
+
 .jumbotron {
    margin: 0;
 } 

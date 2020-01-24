@@ -17,7 +17,7 @@ export const ConfigureStore = () => {
             inventory: Inventory,
             orders: Orders,
             products: Products,
-            users: Users,
+            users: Users
         }),
         applyMiddleware(thunk, logger)
     );

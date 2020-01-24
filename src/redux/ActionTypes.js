@@ -14,6 +14,5 @@ export const PRODUCTS_LOADING = 'PRODUCTS_LOADING';
 export const PRODUCTS_FAILED = 'PRODUCTS_FAILED';
 export const ADD_PRODUCTS = 'ADD_PRODUCTS';
 
-export const USERS_LOADING = 'USERS_LOADING';
-export const USERS_FAILED = 'USERS_FAILED';
-export const ADD_USERS = 'ADD_USERS';
+export const LOGIN_USER = 'LOGIN_USER';
+export const LOGOUT_USER = 'LOGOUT_USER';

@@ -1,17 +1,11 @@
 import * as ActionTypes from './ActionTypes';
 
-export const Users = (state = {
-        isLoading: true,
-        errMess: null,
-        users: []
-    }, action) => {
+export const Users = (state = { currentUser: {} }, action) => {
     switch (action.type) {
-        case ActionTypes.ADD_USERS:
-            return {...state, isLoading: false, errMess: null, users: action.payload};
-        case ActionTypes.USERS_LOADING:
-            return {...state, isLoading: true, errMess: null, users: []};
-        case ActionTypes.USERS_FAILED:
-            return {...state, isLoading: false, errMess: action.payload};
+        case ActionTypes.LOGIN_USER:
+            return {...state, currentUser: action.payload};
+        case ActionTypes.LOGOUT_USER:
+            return {...state, currentUser: {}};
         default:
             return state;
     }

@@ -1,35 +1,40 @@
 import React, { Component } from 'react';
 import { Card, CardHeader, CardBody, Label, Row, Button } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Redirect } from 'react-router-dom';
 
 const required = val => val && val.length;
 
 class SignIn extends Component {
+
     constructor(props) {
         super(props);
 
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
 
-    handleSubmit(values) {
-        /*
-         Everything is wrong with this --
-            Passing the entire users array - even having it exist in JavaScript
-            Cleartext password
-            Plus state needs to be "lifted" so login status can be reflected in header/navbar and used here
-            Also need to handle redirections -- where do we go after successful login?
-                Where will be go after logout (when state is lifted)
-        */
-        const user = this.props.users.filter(user => user.username === values.username)[0];
-        if(!user || user.password !== values.loginPassword) {
-            alert('Invalid username/password!');
-        } else {
-            alert("Good username/password");
+        this.state = {
+            redirectToReferrer: false
         }
     }
 
+    handleSubmit(values) {
+        this.props.userLogin(values.username, values.loginPassword).then((data) => {
+            if (this.props.currentUser.name) {
+                this.setState({
+                    redirectToReferrer: true
+                });
+            }
+            return data;
+        });
+    }
+
     render() {
+        console.log("Props:",this.props)
         const cardHeaderStyle = { backgroundColor: "#e3f2fd" }
+
+        if (this.state.redirectToReferrer === true) {
+            return <Redirect to="/customer" />
+        }
 
         return (
             <div id="content" className="container">

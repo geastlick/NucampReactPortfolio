@@ -144,38 +144,68 @@ export const addProducts = products => ({
     payload: products
 });
 
-export const fetchUsers = () => dispatch => {
-    dispatch(usersLoading());
+// Not exported -- only entry is via userLogin
+const loginUser = userObj => ({
+    type: ActionTypes.LOGIN_USER,
+    payload: userObj
+})
+export const userLogin = (username, password) => dispatch => {
 
-    return fetch('/api/users')
+    const credentials = {
+        username: username,
+        password: password
+    };
+
+    return fetch('/auth/login', {
+        method: "POST",
+        body: JSON.stringify(credentials),
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }
+    })
         .then(response => {
             if (response.ok) {
-                return response;
-            } else {
-                const error = new Error(`Error ${response.status}: ${response.statusText}`); error.response = response;
-                throw error;
+                return response.json();
             }
-        },
-            error => {
-                const errMess = new Error(error.message);
-                throw errMess;
-            }
-        )
-        .then(response => response.json())
-        .then(users => dispatch(addUsers(users)))
-        .catch(error => dispatch(usersFailed(error.message)));
+        })
+        .then(data => {
+            localStorage.setItem("token", data.access_token)
+            dispatch(loginUser(data.user))
+    });
 };
 
-export const usersLoading = () => ({
-    type: ActionTypes.USERS_LOADING
-});
+// Not exported -- only entry is via userLogout
+const logoutUser = userObj => ({
+    type: ActionTypes.LOGOUT_USER
+})
+export const userLogout = () => dispatch => {
+  localStorage.removeItem('token')
+  dispatch(logoutUser())
+};
 
-export const usersFailed = errMess => ({
-    type: ActionTypes.USERS_FAILED,
-    payload: errMess
-});
-
-export const addUsers = users => ({
-    type: ActionTypes.ADD_USERS,
-    payload: users
-});
+export const fetchProfile = () => {
+    return dispatch => {
+      const token = localStorage.token;
+      if (token) {
+        return fetch("/auth/profile", {
+          method: "GET",
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        })
+          .then(resp => resp.json())
+          .then(data => {
+            if (data.message) {
+              // An error will occur if the token is invalid.
+              // If this happens, you may want to remove the invalid token.
+              localStorage.removeItem("token")
+            } else {
+              dispatch(loginUser(data.user))
+            }
+          })
+      }
+    }
+  }
