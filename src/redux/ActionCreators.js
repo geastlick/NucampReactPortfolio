@@ -5,11 +5,11 @@ export const fetchCustomers = () => dispatch => {
     const token = localStorage.token;
 
     return fetch('/api/customers', {
-          headers: {
+        headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
             'Authorization': `Bearer ${token}`
-          }
+        }
     })
         .then(response => {
             if (response.ok) {
@@ -49,11 +49,11 @@ export const fetchInventory = () => dispatch => {
 
     return fetch('/api/inventory', {
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
         }
-  })
+    })
         .then(response => {
             if (response.ok) {
                 return response;
@@ -92,11 +92,11 @@ export const fetchOrders = () => dispatch => {
 
     return fetch('/api/orders', {
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
         }
-  })
+    })
         .then(response => {
             if (response.ok) {
                 return response;
@@ -135,11 +135,11 @@ export const fetchProducts = () => dispatch => {
 
     return fetch('/api/products', {
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
         }
-  })
+    })
         .then(response => {
             if (response.ok) {
                 return response;
@@ -195,45 +195,61 @@ export const userLogin = (username, password) => dispatch => {
         .then(response => {
             if (response.ok) {
                 return response.json();
+            } else {
+                const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                error.response = response;
+                throw error;
             }
-        })
+        },
+            error => {
+                const errMess = new Error(error.message);
+                throw errMess;
+            }
+        )
         .then(data => {
             localStorage.setItem("token", data.access_token)
             dispatch(loginUser(data.user))
-    });
+        })
+        .catch(
+            error => dispatch(loginFailed(error.message))
+        );
 };
+export const loginFailed = errMess => ({
+    type: ActionTypes.LOGIN_FAILED,
+    payload: errMess
+});
 
 // Not exported -- only entry is via userLogout
 const logoutUser = userObj => ({
     type: ActionTypes.LOGOUT_USER
 })
 export const userLogout = () => dispatch => {
-  localStorage.removeItem('token')
-  dispatch(logoutUser())
+    localStorage.removeItem('token')
+    dispatch(logoutUser())
 };
 
 export const fetchProfile = () => {
     return dispatch => {
-      const token = localStorage.token;
-      if (token) {
-        return fetch("/auth/user", {
-          method: "GET",
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Authorization': `Bearer ${token}`
-          }
-        })
-          .then(resp => resp.json())
-          .then(data => {
-            if (data.message) {
-              // An error will occur if the token is invalid.
-              // If this happens, you may want to remove the invalid token.
-              localStorage.removeItem("token")
-            } else {
-              dispatch(loginUser(data.user))
-            }
-          })
-      }
+        const token = localStorage.token;
+        if (token) {
+            return fetch("/auth/user", {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+                .then(resp => resp.json())
+                .then(data => {
+                    if (data.message) {
+                        // An error will occur if the token is invalid.
+                        // If this happens, you may want to remove the invalid token.
+                        localStorage.removeItem("token")
+                    } else {
+                        dispatch(loginUser(data.user))
+                    }
+                })
+        }
     }
-  }
+}

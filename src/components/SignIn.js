@@ -19,13 +19,19 @@ class SignIn extends Component {
 
     handleSubmit(values) {
         this.props.userLogin(values.username, values.loginPassword).then((data) => {
-            if (this.props.currentUser.name) {
+            if (this.props.users.currentUser.name) {
                 this.setState({
                     redirectToReferrer: true
                 });
             }
             return data;
         });
+    }
+
+    signinErrors = () => {
+        if(this.props.users.errMess) {
+            return <div style={{"color":"red", "fontWeight":"bold"}}>Invalid Username/Password</div>;
+        }
     }
 
     render() {
@@ -35,6 +41,7 @@ class SignIn extends Component {
             return <Redirect to="/customer" />
         }
 
+        console.log(this.props);
         return (
             <div id="content" className="container">
                 <div className="row row-content">
@@ -44,6 +51,7 @@ class SignIn extends Component {
                                 Login
                             </CardHeader>
                             <CardBody>
+                                {this.signinErrors()}
                                 <LocalForm onSubmit={values => this.handleSubmit(values)}>
                                     <Row className="form-group">
                                         <Label className="sr-only" htmlFor="username">Username</Label>

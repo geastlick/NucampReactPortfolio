@@ -72,7 +72,7 @@ class App extends Component {
           <Route path="/home" render={() => <FeatureCards features={this.props.features} />} />
           <Route path="/contact" component={ContactUs} />
           <Route path="/about" component={AboutUs} />
-          <Route path="/signin" render={() => <SignIn currentUser={this.props.users.currentUser} userLogin={this.props.userLogin} />} />
+          <Route path="/signin" render={() => <SignIn users={this.props.users} userLogin={this.props.userLogin} />} />
           <PrivateRoute path="/customer" component={Customers} currentUser={this.props.users.currentUser} fetchCustomers={this.props.fetchCustomers} customers={this.props.customers} />
           <PrivateRoute path="/inventory" component={Inventory} currentUser={this.props.users.currentUser} fetchInventory={this.props.fetchInventory} inventory={this.props.inventory} />
           <PrivateRoute path="/order" component={Orders} currentUser={this.props.users.currentUser} fetchOrders={this.props.fetchOrders} orders={this.props.orders} />
