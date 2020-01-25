@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 
 class Orders extends Component {
-    render() {
+    componentDidMount() {
+        this.props.fetchOrders();
+      }
+
+        render() {
         return (
-            <div>Orders<hr />{JSON.stringify(this.props)}</div>
+            <div id="content" className="container">
+                <div className="row row-content">
+                    <div className="col-12"><h2>Orders</h2><hr /></div>
+                    <div className="row row-content">
+                    <div className="col-12">
+                        {JSON.stringify(this.props.orders.orders)}
+                    </div>
+                        </div></div></div>
         );
     }
 }

@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 
 class Inventory extends Component {
-    render() {
+    componentDidMount() {
+        this.props.fetchInventory();
+      }
+
+        render() {
         return (
-            <div>Inventory<hr />{JSON.stringify(this.props)}</div>
+            <div id="content" className="container">
+                <div className="row row-content">
+                    <div className="col-12"><h2>Inventory</h2><hr /></div>
+                    <div className="row row-content">
+                    <div className="col-12">
+                        {JSON.stringify(this.props.inventory.inventory)}
+                    </div>
+                        </div></div></div>
         );
     }
 }

@@ -2,8 +2,15 @@ import * as ActionTypes from './ActionTypes';
 
 export const fetchCustomers = () => dispatch => {
     dispatch(customersLoading());
+    const token = localStorage.token;
 
-    return fetch('/api/customers')
+    return fetch('/api/customers', {
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+    })
         .then(response => {
             if (response.ok) {
                 return response;
@@ -38,8 +45,15 @@ export const addCustomers = customers => ({
 
 export const fetchInventory = () => dispatch => {
     dispatch(inventoryLoading());
+    const token = localStorage.token;
 
-    return fetch('/api/inventory')
+    return fetch('/api/inventory', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+  })
         .then(response => {
             if (response.ok) {
                 return response;
@@ -74,8 +88,15 @@ export const addInventory = inventory => ({
 
 export const fetchOrders = () => dispatch => {
     dispatch(ordersLoading());
+    const token = localStorage.token;
 
-    return fetch('/api/orders')
+    return fetch('/api/orders', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+  })
         .then(response => {
             if (response.ok) {
                 return response;
@@ -110,8 +131,15 @@ export const addOrders = orders => ({
 
 export const fetchProducts = () => dispatch => {
     dispatch(productsLoading());
+    const token = localStorage.token;
 
-    return fetch('/api/products')
+    return fetch('/api/products', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+  })
         .then(response => {
             if (response.ok) {
                 return response;
@@ -188,7 +216,7 @@ export const fetchProfile = () => {
     return dispatch => {
       const token = localStorage.token;
       if (token) {
-        return fetch("/auth/profile", {
+        return fetch("/auth/user", {
           method: "GET",
           headers: {
             'Content-Type': 'application/json',

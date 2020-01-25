@@ -29,7 +29,6 @@ class SignIn extends Component {
     }
 
     render() {
-        console.log("Props:",this.props)
         const cardHeaderStyle = { backgroundColor: "#e3f2fd" }
 
         if (this.state.redirectToReferrer === true) {
